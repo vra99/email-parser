@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form.form-horizontal(method='POST')
+    .my-6
+      label.col-form-label.font-weight-bold.w-100(for='email') Sender
+        input.form-control(type='text', name='sender', id='sender' required)
+    .my-6
+      label.font-weight-bold(for='date') Select three dates:
+        .col-sm-2.col-form-label
+          input#date0(type='date' name='date' value= moment(Date.now()).format('yyyy-MM-dd') min='2018-01-01' required)
+          input#date1(type='date' name='date' value= moment(Date.now()).format('yyyy-MM-dd') min='2018-01-01' required)
+          input#date2(type='date' name='date' value= moment(Date.now()).format('yyyy-MM-dd') min='2018-01-01' required)
+    .form-group.row.justify-content-md-center.my-3
+      .offset-sm-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-envelope
+          | Send
