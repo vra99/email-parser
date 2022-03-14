@@ -34,7 +34,7 @@ to:
 }
 ```
 
-# Deploy the app
+## Deploy the app
 
 Firstly run ``` npm install ``` to install all the dependencies.
 
@@ -44,19 +44,18 @@ Finally run ``` npm run serve ``` to run the app at localhost:3000.
 
 You can also run the app in development mode with nodemon by using the following command ```npm run dev```
 
-# Testing
+## Testing
 In order to test the app, you can use the following command:
 ```npm test```
 
 You can check the app in localhost:3000 once you run the command ```npm start``` fill the form and you will receive the results from the function both in the terminal as a json stringified object and as json response on the browser.
 
-# Technologies used
-```diff
-+-TypeScript
-+-Node.js
-+-Express
-+-Pug
-+-Morgan
-+-Jest
-````
+## Technologies used
+ Markup :   -TypeScript
+            -Node.js
+            -Express
+            -Pug
+            -Morgan
+            -Jest
+
 
