@@ -51,11 +51,11 @@ In order to test the app, you can use the following command:
 You can check the app in localhost:3000 once you run the command ```npm start``` fill the form and you will receive the results from the function both in the terminal as a json stringified object and as json response on the browser.
 
 ## Technologies used
- Markup :   -TypeScript
-            -Node.js
-            -Express
-            -Pug
-            -Morgan
-            -Jest
+- TypeScript
+- Node.js
+- Express
+- Pug
+- Morgan
+- Jest
 
 
