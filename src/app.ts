@@ -37,7 +37,7 @@ app.use(
 /**
  * Routes.
  */
+
 app.get("/", homeController.index);
-app.post("/", homeController.sendEmail);
 
 export default app;

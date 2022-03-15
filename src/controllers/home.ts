@@ -1,42 +1,22 @@
 import { Request, Response } from "express";
-import { check, validationResult } from "express-validator";
+import { parseEmail } from "../util/parseEmail";
 
-export const index = (req: Request, res: Response) => {
-    res.render("home", {
-        title: "Homes"
-    });
-};
-
-export const sendEmail = async (req: Request, res: Response) => {
+export const index = async (req: Request, res: Response) => {
   try {
-    await check("email", "Email is not valid").isEmail().run(req);
-    
-    const errors = validationResult(req);
+    const dummyEmail = "From:<sender@example.com>\r\n"+
+        "To: 'Receiver Name' <receiver@example.com>\r\n"+
+        "Subject: Hello world!\r\n"+
+        "\r\n"+
+        "10 May 2021: 9.130, 11 May 2021: 12500, 12 May 2021: 140.25";
 
-    if (!errors.isEmpty()) {
-        req.flash("errors", errors.array());
-    }
+    const results = await parseEmail(dummyEmail);
 
-    const { ...args } = req.body;
+    //log results on terminal as json
+    console.log(JSON.stringify(results));
 
-    const randomNumber = () => Math.floor((Math.random() * 1000) + 1);
-
-    if (args.date){
-       args.date = await args.date.reduce((a:string[], i:number) => ({ ...a, [i]: randomNumber()}), {}); 
-    } else {
-        throw new Error("Date is not valid");
-    }
-
-    const total = Object.values(args.date).reduce((a:number, i:number) => a + i );
-    args.mean= Number(total) / Object.values(args.date).length ;
-
-    //log results on the console as stringified json
-    console.log(JSON.stringify(args, null, 2));
-
-    return res.status(200).json(args);
-  }
-  catch(err){
-      console.log(err);
-      return res.status(500).json({ err: "Ooops something went wrong" });
+    return res.status(200).json(results);
+  } catch(err){
+    console.log(err);
+    return res.status(500).json({err});
   }
 };
